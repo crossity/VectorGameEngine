@@ -5,8 +5,10 @@ to build this use "g++ file_name -o file_base_name -Wall -I include -lsdl2 -lsdl
 
 - WRITING CODE:
     a) Create variable:
+    
         . "num var_name = number"
     b) Create array:
+    
         . "nums arr_name[size] = {number, number}"
     c) Print text:
         . "print x, y, "text", char 10"
@@ -46,28 +48,28 @@ to build this use "g++ file_name -o file_base_name -Wall -I include -lsdl2 -lsdl
                 str a = "Hello, World!"
                 print str a, char 10
             }"
-	g) Graphics:
-		. Choosing color - "color r, g, b"
-		. Clearing buffer - "clear"
-		. Showing buffer - "render"
-		. Draw Pixel - "putpix x, y"
-		. Draw Line - "putine x1, y1, x2, y2"
-	h) Input handling:
-		. Key is pressed - "is_input var"
-		. Key that was pressed - "input var"
-		. Keys:
-			'<' - A/LeftKey
-			'>' - D/RightKey
-			'V' - S/DownKey
-			'^' - W/UpKey
-			'A' - J
-			'B' - K
-	i) Macros:
-		. constants - "#define Height 10"
-		. macro - "#define SetToTen = 10"
-	j) Including:
-		1) put library in the same dir as your code file
-		2) include it - "#include lib.vec"
+    g) Graphics:
+        . Choosing color - "color r, g, b"
+        . Clearing buffer - "clear"
+        . Showing buffer - "render"
+        . Draw Pixel - "putpix x, y"
+        . Draw Line - "putine x1, y1, x2, y2"
+    h) Input handling:
+        . Key is pressed - "is_input var"
+        . Key that was pressed - "input var"
+        . Keys:
+            '<' - A/LeftKey
+            '>' - D/RightKey
+            'V' - S/DownKey
+            '^' - W/UpKey
+            'A' - J
+            'B' - K
+    i) Macros:
+        . constants - "#define Height 10"
+        . macro - "#define SetToTen = 10"
+    j) Including:
+        1) put library in the same dir as your code file
+        2) include it - "#include lib.vec"
 
 - USING TEXT EDITOR:
 	a) Navigation:
