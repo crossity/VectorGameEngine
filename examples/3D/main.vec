@@ -1,0 +1,76 @@
+#include lib.vec 
+
+#define true  1
+#define false 0
+
+#define Width  200
+#define Height 200
+
+struct vec3 {
+  num x
+  num y
+  num z
+}
+
+struct vec2 {
+  num x
+  num y
+}
+
+fn main {
+  num run = true
+
+  struct vec3 p
+  : p.x = 0
+  : p.y = 2
+  : p.z = 0
+  
+  nums rend_p[2]
+  struct vec2 rend_p
+  
+  while run =>
+    color 0, 0, 0
+    clear
+    color 255, 0, 0
+
+    @ Render p.x, p.y, p.z @ ->> rend_p
+    : rend_p.x = rend_p[0]
+    : rend_p.y = rend_p[1]
+    @ DrawDot rend_p.x, rend_p.y @
+
+    render
+  end
+}
+
+fn Render num x num y num z {
+  nums p[2]
+  log "II"
+  : p[0] = Width * (x - z + 4) / (8 - 2 * z)
+  : p[1] = Height * (4 - z - y) / (8 - 2 * z) 
+
+  return nums p
+}
+
+fn DrawDot num x num y {
+  : x -= 1
+  : y -= 1
+  putpix x ,y
+  : x += 1
+  putpix x, y
+  : x += 1
+  putpix x, y
+  : x -= 2
+  : y += 1
+  putpix x, y
+  : x += 1
+  putpix x, y
+  : x += 1
+  putpix x, y
+  : x -= 2
+  : y += 1
+  putpix x, y
+  : x += 1
+  putpix x, y
+  : x += 1
+  putpix x, y
+}

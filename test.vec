@@ -1,0 +1,19 @@
+#define Height 200
+#define Width  200
+
+#define true  1
+#define false 0
+
+fn main {
+  num run = true
+
+  num a = true
+
+  while run =>
+    color 0, 0, 0
+    clear
+    render
+  end
+}
+
+
