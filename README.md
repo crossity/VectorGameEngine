@@ -4,6 +4,7 @@ small game engine with its own language and text editor
 to build this use "g++ file_name -o file_base_name -Wall -I include -lsdl2 -lsdl2_ttf"
 
 - WRITING CODE:
+
     a) Create variable:
     
         . "num var_name = number"
