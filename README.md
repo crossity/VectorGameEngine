@@ -1,6 +1,11 @@
 # VectorGameEngine
 small game engine with its own language and text editor
 
+installing librarys:
+
+	"brew install sdl2"
+	"brew install sdl2_ttf"
+
 to build this use:
 	
 	"g++ file_name -o file_base_name -Wall -I include -lsdl2 -lsdl2_ttf"
@@ -21,11 +26,15 @@ to build this use:
     d) Change variable:
     
         . ": var_name = number"
-        . ": var_name += number"
+        . ": var_name += number"(-=, *=, /=)
+	. ": var_name sin number" (cos)
     e) Change array:
     
         . ": arr_name[el] = number"
-        . ": arr_name[el] += number"
+        . ": arr_name[el] += number"(-=, *=, /=)
+	. ": arr_name[el] sin number"(cos)
+	. ": arr_name append number"
+	. ": arr_name pop var"
     f) Change variable:
     
         . ": var_name = number"
