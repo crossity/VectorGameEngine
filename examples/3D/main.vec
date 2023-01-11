@@ -1,5 +1,3 @@
-#include lib.vec 
-
 #define true  1
 #define false 0
 
@@ -24,6 +22,7 @@ fn main {
   : p.x = 0
   : p.y = 2
   : p.z = 0
+  nums p[3]
   
   nums rend_p[2]
   struct vec2 rend_p
@@ -32,6 +31,14 @@ fn main {
     color 0, 0, 0
     clear
     color 255, 0, 0
+
+    @ RotateX 0, 0, 0, 0.001, p.x, p.y, p.z @
+    ->> p
+    @ RotateZ 0, 0, 0, 0.001, p[0], p[1], p[2] @
+    ->> p
+    :p.x = p[0]
+    :p.y = p[1]
+    :p.z = p[2]
 
     @ Render p.x, p.y, p.z @ ->> rend_p
     : rend_p.x = rend_p[0]
@@ -44,9 +51,57 @@ fn main {
 
 fn Render num x num y num z {
   nums p[2]
-  log "II"
   : p[0] = Width * (x - z + 4) / (8 - 2 * z)
   : p[1] = Height * (4 - z - y) / (8 - 2 * z) 
+  return nums p
+}
+
+fn RotateX num cx num cy num cz num angle num px num py num pz {
+  nums p[3]
+
+  num sn
+  num cs
+
+  :sn sin angle
+  :cs cos angle
+
+  :pz -= cz
+  :py -= cy
+
+  num ynew = py * cs - pz * sn
+  num znew = py * sn + pz * cs
+
+  :pz = znew + cz
+  :py = ynew + cy
+
+  :p[0] = px
+  :p[1] = py
+  :p[2] = pz
+
+  return nums p
+}
+
+fn RotateZ num cx num cy num cz num angle num px num py num pz {
+  nums p[3]
+
+  num sn
+  num cs
+
+  :sn sin angle
+  :cs cos angle
+
+  :px -= cx
+  :py -= cy
+
+  num ynew = py * cs - px * sn
+  num xnew = py * sn + px * cs
+
+  :px = xnew + cz
+  :py = ynew + cy
+
+  :p[0] = px
+  :p[1] = py
+  :p[2] = pz
 
   return nums p
 }

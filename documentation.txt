@@ -9,10 +9,15 @@
 		. "print x, y, char 100"
 	d) Change variable:
 		. ": var_name = number"
-		. ": var_name += number"
+		. ": var_name += number"(-=, *=, /=)
+		. ": var_name sin number"(cos)
 	e) Change array:
 		. ": arr_name[el] = number"
-		. ": arr_name[el] += number"
+		. ": arr_name[el] += number"(-=, *=, /=)
+		. ": arr_name[el] sin number"(cos)
+		. "arr_name append number"
+		. "arr_name pop var"
+		. "arr_name pop arr[el]"
 	f) Change variable:
 		. ": var_name = number"
 		. ": var_name += number"

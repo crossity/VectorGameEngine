@@ -16,6 +16,17 @@ or
 fn
 =>
 end
+->
+->>
+return
 
 true
 false
+
+append
+pop
+
+sin
+cos
+
+

@@ -3,6 +3,7 @@
 #include <string>
 #include <cstring>
 #include <fstream>
+#include <cmath>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
@@ -713,6 +714,10 @@ void Run(SDL_Renderer *renderer, TTF_Font *font, SDL_Texture *texture, string co
                     arrs[find(name)].value[el] *= math(insides);
                 else if (sign == "/=")
                     arrs[find(name)].value[el] /= math(insides);
+                else if (sign == "sin")
+                    arrs[find(name)].value[el] = sin(math(insides));
+                else if (sign == "cos")
+                    arrs[find(name)].value[el] = cos(math(insides));
             }
             else {
                 sign = words[w];
@@ -730,6 +735,10 @@ void Run(SDL_Renderer *renderer, TTF_Font *font, SDL_Texture *texture, string co
                     vars[find(name)].value *= math(insides);
                 else if (sign == "/=")
                     vars[find(name)].value /= math(insides);
+                else if (sign == "sin")
+                    vars[find(name)].value = sin(math(insides));
+                else if (sign == "cos")
+                    vars[find(name)].value = cos(math(insides));
             }
         }
         else if (words[w] == "print") {
@@ -1070,6 +1079,39 @@ void Run(SDL_Renderer *renderer, TTF_Font *font, SDL_Texture *texture, string co
             for (int i = 0; i < size; i++)
                 arrs[find(words[w])].value[i] = returns_arr[returns_arr.size() - 1][i];
             returns_arr.pop_back();
+        }
+        else if (words[w + 1] == "append") {
+            string name = words[w];
+            w += 2;
+            vector<string> insides;
+            for (; words[w] != "\n" && words[w] != "|"; w++)
+                insides.push_back(words[w]);
+            arrs[find(name)].value.push_back(math(insides));
+        }
+        else if (words[w + 1] == "pop") {
+            string name = words[w];
+            w += 2;
+            string pop_to_var = words[w];
+            if (words[w + 1] == "[") {
+                w += 2;
+                int brackets = 1;
+                vector<string> insides;
+                for (; brackets != 0; w++) {
+                    if (words[w] == "[")
+                        brackets++;
+                    if (words[w] == "]")
+                        brackets--;
+                    if (brackets != 0)
+                        insides.push_back(words[w]);
+                }
+                int el = math(insides);
+                arrs[find(pop_to_var)].value[el] = arrs[find(name)].value[arrs[find(name)].value.size() - 1];
+                arrs[find(name)].value.pop_back();
+            }
+            else {
+                vars[find(pop_to_var)].value = arrs[find(name)].value[arrs[find(name)].value.size() - 1];
+                arrs[find(name)].value.pop_back();
+            }
         }
     }
     while (vars.size() > 0)
