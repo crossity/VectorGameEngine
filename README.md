@@ -27,14 +27,14 @@ to build this use:
     
         . ": var_name = number"
         . ": var_name += number"(-=, *=, /=)
-	. ": var_name sin number" (cos)
+		. ": var_name sin number" (cos)
     e) Change array:
     
         . ": arr_name[el] = number"
         . ": arr_name[el] += number"(-=, *=, /=)
-	. ": arr_name[el] sin number"(cos)
-	. ": arr_name append number"
-	. ": arr_name pop var"
+		. ": arr_name[el] sin number"(cos)
+		. ": arr_name append number"
+		. ": arr_name pop var"
     f) Change variable:
     
         . ": var_name = number"
